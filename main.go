@@ -36,8 +36,17 @@ func getHome(c *gin.Context) {
 }
 
 func getEvents(context *gin.Context) {
-	events := models.GetAllEvents()
-	context.JSON(http.StatusOK, events)
+	events, err := models.GetAllEvents()
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not get events"})
+		return
+	}
+	if len(events) == 0 {
+		context.JSON(http.StatusNotFound, gin.H{"message": "no events found"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"events": events})
 }
 
 func createEvent(context *gin.Context) {
@@ -51,7 +60,11 @@ func createEvent(context *gin.Context) {
 	event.ID = 1
 	event.UserID = 1
 
-	event.Save()
+	err = event.Save()
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not create event"})
+		return
+	}
 
 	context.JSON(http.StatusCreated, gin.H{"message": "event created", "event": event})
 }
