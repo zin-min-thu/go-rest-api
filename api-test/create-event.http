@@ -3,8 +3,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "Test event 1",
-    "description": "Test description 1",
-    "location": "Test location 1",
+    "name": "Test event 2",
+    "description": "Test description 2",
+    "location": "Test location 2",
     "datetime": "2025-05-18T15:30:00.00Z"
 }
