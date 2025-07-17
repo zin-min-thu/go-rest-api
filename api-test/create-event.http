@@ -1,10 +1,11 @@
 POST http://localhost:8080/events
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNzUyNzcyMzg0LCJ1c2VySWQiOjB9.JEf89d4ORlApc3hkcRFf1Raql4nILyIQovyECLURLEw
 Accept: application/json
 
 {
-    "name": "Test event 2",
-    "description": "Test description 2",
-    "location": "Test location 2",
+    "name": "Test event 1",
+    "description": "Test description 1",
+    "location": "Test location 1",
     "datetime": "2025-05-18T15:30:00.00Z"
 }
